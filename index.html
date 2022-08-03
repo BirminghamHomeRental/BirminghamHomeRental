@@ -4,17 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Birmingham Home Rental</title>
 </head>
 <body>
   
-  <h1>User Data</h1>
+  <h1>Birmingham Home Rental</h1>
 
-<form action="/api/user" method="POST">
+<form action="/api/request" method="POST">
+  <h2>Request Your Stay</h2>
+    First Name: <br>
     <input name="first" placeholder="First name" type="text" required />
-    <input name="last" placeholder="Last name" type="text" required />
-    <input name="age" placeholder="Age" type="number" min="0" max="130" required />
-
+    <br>
+    Last Name: <br><input name="last" placeholder="Last name" type="text" required />
+    <br>Check-In: <br><input name="checkin" type="date" required />
+    <br>Check-Out: <br><input name="checkout" type="date" required />
+    <br><br>Optional Services: 
+    <br><input name="alarm" type="checkbox">Alarm System Code - $50 per stay
+    <br><input name="cameras" type="checkbox">Camera System Access - $50 per stay
+    <br><input name="groceries" type="checkbox">Grocery Shopping Service - $20 per day
+    <br><input name="breakfast" type="checkbox">Personal Breakfast Chef - $30 per day
+    <br><input name="mail" type="checkbox"> Recieve Mail/Packages - $20 per stay<br>
     <button type="submit">Submit</button>
 </form>  
 </body>

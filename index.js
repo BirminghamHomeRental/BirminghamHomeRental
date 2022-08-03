@@ -8,7 +8,8 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8080;
 
-const mySQLString = process.env.CLEARDB_DATABASE_URL;
+// const mySQLString = process.env.CLEARDB_DATABASE_URL;
+const mySQLString = 'mysql://bb6b67e1c186bc:87ccd771@us-cdbr-east-06.cleardb.net/heroku_ecea74e93b1f819?reconnect=true';
 const database = new Prohairesis(mySQLString);
 
 
@@ -24,26 +25,44 @@ app
 
 
 
-    .post('/api/user', async (req, res) => {
+    .post('/api/request', async (req, res) => {
         const body = req.body;
 
         await database.execute(`
-            INSERT INTO user (
+            INSERT INTO reservations (
                 first_name,
                 last_name,
-                age,
+                check_in,
+                check_out,
+                alarm,
+                cameras,
+                groceries,
+                breakfast,
+                mail,
                 date_added
             ) VALUES (
                 @firstName,
                 @lastName,
-                @age,
+                @checkIn,
+                @checkOut,
+                @alarm,
+                @cameras,
+                @groceries,
+                @breakfast,
+                @mail,
                 NOW()
             )
         
         `, {
             firstName: body.first,
             lastName: body.last,
-            age: body.age,
+            checkIn: body.checkin,
+            checkOut: body.checkout,
+            alarm: body.alarm,
+            cameras: body.cameras,
+            groceries: body.groceries,
+            breakfast: body.breakfast,
+            mail: body.mail,
 
         })
         
